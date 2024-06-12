@@ -1,4 +1,4 @@
-# CustomCoin Contract
+# MVCoin Contract
 
 This Solidity program is a simple illustration of the generation, minting, and burning of tokens.
 
@@ -16,7 +16,7 @@ To run this program, you can use Remix, an online Solidity IDE.
 
 1. Go to the Remix website at [Remix Ethereum](https://remix.ethereum.org/).
 
-2. Copy the following code into a new file named `CustomToken.sol` in Remix.
+2. Copy the following code into a new file named `MVCoin.sol` in Remix.
 
     ```solidity
     // SPDX-License-Identifier: MIT
@@ -36,34 +36,34 @@ To run this program, you can use Remix, an online Solidity IDE.
            to the amount that is supposed to be burned.
     */
 
-    contract CustomToken {
+    contract MVCoin {
 
         // public variables here
-        string public coinName = "CustomCoin";
-        string public coinSymbol = "CCN";
-        uint public totalTokens = 0;
+        string public tokenName = "MVCoin";
+        string public tokenSymbol = "MVC";
+        uint public totalSupply = 0;
 
         // mapping variable here
-        mapping(address => uint) public accountBalances;
+        mapping(address => uint) public balances;
 
         // mint function
         function mint(address _to, uint _amount) public {
-            totalTokens += _amount;
-            accountBalances[_to] += _amount;
+            totalSupply += _amount;
+            balances[_to] += _amount;
         }
 
         // burn function
         function burn(address _from, uint _amount) public {
-            require(accountBalances[_from] >= _amount, "Insufficient balance to burn");
-            totalTokens -= _amount;
-            accountBalances[_from] -= _amount;
+            require(balances[_from] >= _amount, "Insufficient balance to burn");
+            totalSupply -= _amount;
+            balances[_from] -= _amount;
         }
     }
     ```
 
-3. To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.18" (or another compatible version), and then click on the "Compile CustomToken.sol" button.
+3. To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.18" (or another compatible version), and then click on the "Compile MVCoin.sol" button.
 
-4. Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "CustomToken" contract from the dropdown menu, and then click on the "Deploy" button.
+4. Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "MVCoin" contract from the dropdown menu, and then click on the "Deploy" button.
 
 ## Help
 
