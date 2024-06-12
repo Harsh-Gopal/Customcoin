@@ -15,26 +15,26 @@ pragma solidity 0.8.18;
        to the amount that is supposed to be burned.
 */
 
-contract CustomToken {
+contract MVCoin {
 
     // public variables here
-    string public coinName = "CustomCoin";
-    string public coinSymbol = "CCN";
-    uint public totalTokens = 0;
+    string public tokenName = "MVCoin";
+    string public tokenSymbol = "MVC";
+    uint public totalSupply = 0;
 
     // mapping variable here
-    mapping(address => uint) public accountBalances;
+    mapping(address => uint) public balances;
 
     // mint function
     function mint(address _to, uint _amount) public {
-        totalTokens += _amount;
-        accountBalances[_to] += _amount;
+        totalSupply += _amount;
+        balances[_to] += _amount;
     }
 
     // burn function
     function burn(address _from, uint _amount) public {
-        require(accountBalances[_from] >= _amount, "Insufficient balance to burn");
-        totalTokens -= _amount;
-        accountBalances[_from] -= _amount;
+        require(balances[_from] >= _amount, "Insufficient balance to burn");
+        totalSupply -= _amount;
+        balances[_from] -= _amount;
     }
 }
